@@ -43,23 +43,24 @@ public class Jugador : MonoBehaviour
         if (fuerzaSalto > 400)
         {
 
-            rigidbody2D.AddForce(new Vector2(fuerzaSalto - 350, 500));
+            rigidbody2D.AddForce(new Vector2(fuerzaSalto - 347, 500));
+            
             
         }
         else if (fuerzaSalto > 200)
         {
-            rigidbody2D.AddForce(new Vector2(fuerzaSalto, 35));
+            rigidbody2D.AddForce(new Vector2(fuerzaSalto-18, 36));
             
         }
         else if (fuerzaSalto< -400)
         {
-            rigidbody2D.AddForce(new Vector2(fuerzaSalto + 350, 500));
+            rigidbody2D.AddForce(new Vector2(fuerzaSalto + 347, 500));
             
 
         }
         else if(fuerzaSalto<-200) {
             
-            rigidbody2D.AddForce(new Vector2(fuerzaSalto, 35));
+            rigidbody2D.AddForce(new Vector2(fuerzaSalto+10, 38));
            
         }
 

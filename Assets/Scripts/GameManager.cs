@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     
     public GameObject sapo1;
     public int[] sapos = new int[] { 1, 6, 0, 3, 4, 5, 6 };
+    public bool Jugando = true ;
+    public GameObject finalJuego;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(sapos[0]>3&&sapos[1]>3&&sapos[2]>3&&sapos[3]==0&&sapos[4]<4&&sapos[5]<4&&sapos[6]<4){
+            if(Jugando){
+                UnityEngine.Debug.Log("GANO EL JUEGO DE LA RANA USTED ES UN GENIO, HARVARD QUIERE SABER TU UBICACION");
+                finalJuego.SetActive(true);
+                Jugando = false;
+            }
+            
+        }
         
     }
 
@@ -43,7 +53,7 @@ public class GameManager : MonoBehaviour
                     }
                     return 250;
                 }
-                else if ((System.Array.IndexOf(sapos, n) + 2) < 6)
+                else if ((System.Array.IndexOf(sapos, n) + 2) < 7)
                 {
 
                     if (sapos[(System.Array.IndexOf(sapos, n) + 2)] == 0 && sapos[(System.Array.IndexOf(sapos, n) + 1)] > 3)
@@ -129,6 +139,6 @@ public class GameManager : MonoBehaviour
         else{
             return 0;
         }
-        return 1000;
+        return 0;
     }
 }
