@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class GameManager : MonoBehaviour
     public int[] sapos = new int[] { 1, 6, 0, 3, 4, 5, 6 };
     public bool Jugando = true ;
     public GameObject finalJuego;
+    public GameObject JuegoCanvas;
+    public List<string> movimientosList= new List<string>();
+    public TMP_Text Pasos ;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +27,30 @@ public class GameManager : MonoBehaviour
     {
         if(sapos[0]>3&&sapos[1]>3&&sapos[2]>3&&sapos[3]==0&&sapos[4]<4&&sapos[5]<4&&sapos[6]<4){
             if(Jugando){
-                UnityEngine.Debug.Log("GANO EL JUEGO DE LA RANA USTED ES UN GENIO, HARVARD QUIERE SABER TU UBICACION");
+                UnityEngine.Debug.Log("GANO EL JUEGO DE LA RANA");
+                ganar();
+                JuegoCanvas.SetActive(false);
                 finalJuego.SetActive(true);
                 Jugando = false;
+                UnityEngine.Debug.Log(movimientosList[2]);
             }
             
         }
         
+    }
+
+    public void ganar(){
+
+        string movi="";
+        for(int i = 0;i<movimientosList.Count;i++){
+            
+            movi = movi + "\n" + movimientosList[i];
+
+
+        }
+
+        Pasos.SetText(movi);
+
     }
 
     public float RetornarPosicion(int n) {
@@ -51,6 +73,7 @@ public class GameManager : MonoBehaviour
                     {
                         UnityEngine.Debug.Log(sapos[i]);
                     }
+                    movimientosList.Add(string.Join(" ", sapos));
                     return 250;
                 }
                 else if ((System.Array.IndexOf(sapos, n) + 2) < 7)
@@ -71,6 +94,7 @@ public class GameManager : MonoBehaviour
                         {
                             UnityEngine.Debug.Log(sapos[i]);
                         }
+                        movimientosList.Add(string.Join(" ", sapos));
                         return 500;
                     }
                     else
@@ -102,6 +126,7 @@ public class GameManager : MonoBehaviour
                     {
                         UnityEngine.Debug.Log(sapos[i]);
                     }
+                    movimientosList.Add(string.Join(" ", sapos));
                     return -240;
                 }
                 else if ((System.Array.IndexOf(sapos, n) - 2) >= 0)
@@ -122,6 +147,7 @@ public class GameManager : MonoBehaviour
                         {
                             UnityEngine.Debug.Log(sapos[i]);
                         }
+                        movimientosList.Add(string.Join(" ", sapos));
                         return -500;
                     }
                     else
